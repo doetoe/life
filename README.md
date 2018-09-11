@@ -13,7 +13,7 @@ Compile the executable by invoking `make`. This will generate the program `life`
     Usage: ./life <generations> <delay (ms)> <init fraction> <seed> <prefer_txt>
 
 * <generations> (default 10) is the number of generations you want to display
-* <delay> (default 200 ms) is the time in milliseconds that you want to wait between generations. You can make this as short as you want, but when it is too short to finish drawing one generation before refreshing it, it won't look very smooth.
+* <delay> (default 200 ms) is the time in milliseconds that you want to wait between generations. You can make this as short as you want, but when it is too short to finish drawing one generation before refreshing it, it won't look very smooth. Both in the framebuffer and in a fast terminal like `urxvt` this can be brought down considerably, below 10 ms on my laptop.
 * <init fraction> is a number between 0 and 1 with the proportion of live cells
 * <seed> is an integer that seeds the random generator
 * set <prefer_txt> to 1 if you want to have text output, even if the framebuffer is available.
