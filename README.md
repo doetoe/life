@@ -1,45 +1,31 @@
-**Edit a file, create a new file, and clone from Bitbucket in under 2 minutes**
+# Conway's Game of Life #
 
-When you're done, you can delete the content in this README and update the file with details for others getting started with your repository.
+This is a fast implementation of [Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life) on Linux. When available, e.g. when executing the program in a non-graphical mode (Ctrl-Alt-F1), the full framebuffer is used so that every pixel is a cell. When the framebuffer is not available, the present terminal window is used, in which every character is a cell. In both cases we have periodic boundaries.
 
-*We recommend that you open this README in another tab as you perform the tasks below. You can [watch our video](https://youtu.be/0ocf7u76WSo) for a full demo of all the steps in this tutorial. Open the video in a new tab to avoid leaving Bitbucket.*
+Note that you may have to be a superuser to have permissions to use the framebuffer.
 
----
+Finally, the text-based output will look better or worse depending on the terminal emulator you are using. The fastest and best looking one that I tried was `rxvt-unicode` (`urxvt`).
 
-## Edit a file
+### Usage ###
 
-You’ll start by editing this README file to learn how to edit a file in Bitbucket.
+Compile the executable by invoking `make`. This will generate the program `life`. When run with a single argument `?`, usage information is displayed, namely 
 
-1. Click **Source** on the left side.
-2. Click the README.md link from the list of files.
-3. Click the **Edit** button.
-4. Delete the following text: *Delete this line to make a change to the README from Bitbucket.*
-5. After making your change, click **Commit** and then **Commit** again in the dialog. The commit page will open and you’ll see the change you just made.
-6. Go back to the **Source** page.
+    Usage: ./life <generations> <delay (ms)> <init fraction> <seed> <prefer_txt>
 
----
+* <generations> (default 10) is the number of generations you want to display
+* <delay> (default 200 ms) is the time in milliseconds that you want to wait between generations. You can make this as short as you want, but when it is too short to finish drawing one generation before refreshing it, it won't look very smooth.
+* <init fraction> is a number between 0 and 1 with the proportion of live cells
+* <seed> is an integer that seeds the random generator
+* set <prefer_txt> to 1 if you want to have text output, even if the framebuffer is available.
 
-## Create a file
+When executed, it will display the specified number of generations, and return to the command line (note that the framebuffer contents will not be erased before it is explicitly overwritten). Ctrl-C to exit prematurely.
 
-Next, you’ll add a new file to this repository.
+If you want timing information, compile `lifetime` using `make lifetime`. This can be executed like the other, but also as
 
-1. Click the **New file** button at the top of the **Source** page.
-2. Give the file a filename of **contributors.txt**.
-3. Enter your name in the empty file space.
-4. Click **Commit** and then **Commit** again in the dialog.
-5. Go back to the **Source** page.
+    ./lifetime <generations> <rows> <cols>
 
-Before you move on, go ahead and explore the repository. You've already seen the **Source** page, but check out the **Commits**, **Branches**, and **Settings** pages.
+in which case it will not display anything, only compute the specified number of generations on a world of the specified size, and output how long each update took in microseconds.
 
----
+### Contact ###
 
-## Clone a repository
-
-Use these steps to clone from SourceTree, our client for using the repository command-line free. Cloning allows you to work on your files locally. If you don't yet have SourceTree, [download and install first](https://www.sourcetreeapp.com/). If you prefer to clone from the command line, see [Clone a repository](https://confluence.atlassian.com/x/4whODQ).
-
-1. You’ll see the clone button under the **Source** heading. Click that button.
-2. Now click **Check out in SourceTree**. You may need to create a SourceTree account or log in.
-3. When you see the **Clone New** dialog in SourceTree, update the destination path and name if you’d like to and then click **Clone**.
-4. Open the directory you just created to see your repository’s files.
-
-Now that you're more familiar with your Bitbucket repository, go ahead and add a new file locally. You can [push your change back to Bitbucket with SourceTree](https://confluence.atlassian.com/x/iqyBMg), or you can [add, commit,](https://confluence.atlassian.com/x/8QhODQ) and [push from the command line](https://confluence.atlassian.com/x/NQ0zDQ).
+doetoe@protonmail.com
